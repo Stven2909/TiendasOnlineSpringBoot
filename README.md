@@ -1,2 +1,2 @@
 # TiendasOnlineSpringBoot
-Proyecto SpringBoot Tienda en Linea
+Proyecto SpringBoot Tienda en Linea Backend
