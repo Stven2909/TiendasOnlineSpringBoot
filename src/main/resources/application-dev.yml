@@ -1,0 +1,33 @@
+# src/main/resources/application-dev.yml
+server:
+  servlet:
+    context-path: /service-main
+  port: 8502
+
+spring:
+  application:
+    name: Tienda de Ropa LunaStore
+    version: v1
+    title: Tienda de Ropa
+
+  datasource:
+    url: jdbc:mysql://localhost/db_lunastore
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: steven.melendez001@gmail.com
+    password: drqg ncbo nlfl zieu
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
