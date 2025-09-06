@@ -1,0 +1,80 @@
+<div class="carrito-container">
+  <h2>Tu Carrito</h2>
+
+  <div *ngIf="loading" class="loading-spinner">
+    Cargando carrito...
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="carrito.length === 0 && !loading && !errorMessage" class="empty-cart">
+    <p>Tu carrito está vacío.</p>
+    <button routerLink="/" class="btn btn-primary">Volver a la tienda</button>
+  </div>
+
+  <ul *ngIf="carrito.length > 0" class="carrito-items">
+    <li *ngFor="let producto of carrito" class="carrito-item">
+      <div class="item-image-container">
+        <img [src]="getImageUrl(producto.image)" [alt]="producto.nombre" class="product-image">
+      </div>
+      <div class="item-details">
+        <h3>{{ producto.nombre }}</h3>
+        <p>{{ producto.descripcion }}</p>
+        <p>Precio: {{ producto.precio | currency }}</p>
+      </div>
+      <button (click)="eliminarProducto(producto.id)" class="btn btn-danger btn-sm">Eliminar</button>
+    </li>
+  </ul>
+
+  <div *ngIf="carrito.length > 0" class="carrito-total">
+    <strong>Total: {{ total | currency }}</strong>
+    <button (click)="vaciarCarrito()" class="btn btn-warning">Vaciar Carrito</button>
+    <button (click)="generarFactura()" class="btn btn-success">Finalizar Compra</button>
+    <button routerLink="/" class="btn btn-secondary">Seguir Comprando</button>
+  </div>
+</div>
+
+<!--Modal de la Factura-->
+<div *ngIf="mostrarFactura" class="factura-modal">
+  <div class="factura-contenido">
+    <div class="factura-header">
+      <h2>Factura de Compra</h2>
+      <button (click)="cerrarFactura()" class="btn-cerrar">×</button>
+    </div>
+    <div class="factura-body">
+      <div class="factura-info">
+        <p><strong>Fecha:</strong> {{ fechaFactura | date:'dd/MM/yyyy HH:mm' }}</p>
+        <p><strong>Número de Factura:</strong> {{ numeroFactura }}</p>
+      </div>
+      <table class="factura-tabla">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of carrito">
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precio | currency }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2" class="total-label">Total</td>
+            <td class="total-valor">{{ total | currency }}</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="factura-footer">
+        <p>¡Gracias por tu compra!</p>
+        <button (click)="imprimirFactura()" class="btn btn-primary">Imprimir Factura</button>
+        <button (click)="finalizarCompra()" class="btn btn-success">Confirmar Compra</button>
+      </div>
+    </div>
+  </div>
+</div>

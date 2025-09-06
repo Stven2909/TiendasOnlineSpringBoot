@@ -1,0 +1,747 @@
+/* src/app/app.component.css */
+/* Estilos generales */
+:root {
+  --primary-color: #6c5ce7;
+  --secondary-color: #a29bfe;
+  --dark-color: #2d3436;
+  --light-color: #f5f6fa;
+  --success-color: #00b894;
+  --danger-color: #ff7675; /* Añade un color para el botón de cerrar sesión */
+  --warning-color: #fdcb6e; /* Color para los íconos de estrellas */
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: #f8f9fa;
+}
+
+/* Barra de navegación */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  flex-wrap: wrap; /* Añadido para mejor responsividad */
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--dark-color);
+}
+
+.search-container {
+  display: flex;
+  flex-grow: 0.5;
+  margin: 0 2rem;
+  max-width: 400px; /* Limita el ancho de la barra de búsqueda */
+}
+
+.search-input {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 25px 0 0 25px;
+  width: 100%;
+  outline: none;
+}
+
+.search-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0 25px 25px 0;
+  padding: 0 1rem; /* Asegura el padding */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición para hover */
+}
+
+.search-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap; /* Añadido para responsividad si hay muchos botones */
+}
+
+.auth-btn, .cart-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; /* Centra el contenido (ícono/texto) */
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: white; /* Asegura que el texto sea blanco */
+  min-width: 80px;
+  min-height: 35px; /* Ligeramente más alto para mejor clic */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones para hover */
+  text-decoration: none; /* Elimina subrayado de routerLink */
+}
+
+/* Colores específicos para cada botón */
+.login-btn {
+  background: var(--primary-color);
+}
+.login-btn:hover {
+  background: #8c7ae6;
+  transform: translateY(-2px);
+}
+
+.register-btn { /* Añadido para tu botón de registro */
+  background: #2ed573; /* Un verde vibrante */
+}
+.register-btn:hover {
+  background: #2e864b;
+  transform: translateY(-2px);
+}
+
+.logout-btn {
+  background: var(--danger-color); /* Usando la variable danger-color */
+}
+.logout-btn:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+.cart-btn {
+  background: var(--dark-color);
+  position: relative;
+}
+.cart-btn:hover {
+  background: #57606f; /* Un gris más claro al pasar el ratón */
+  transform: translateY(-2px);
+}
+
+.manage-btn { /* Estilo para el botón Gestionar */
+  background: var(--primary-color);
+}
+.manage-btn:hover {
+  background: #8c7ae6;
+  transform: translateY(-2px);
+}
+
+/* Íconos dentro de los botones: Asegúrate de que tengan color y tamaño */
+.auth-btn i, .cart-btn i {
+  font-size: 1.1rem; /* Ligeramente más grandes */
+  color: white; /* Asegura que el color del ícono sea blanco */
+  /* margin-right: 4px; -- Quita si ya usas gap en el padre inline-flex */
+}
+
+/* Badge del carrito */
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--success-color);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  /* Asegura un z-index alto si se superpone con algo */
+  z-index: 1;
+}
+
+/* Contenedor principal */
+.main-container {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 1200px; /* Añadido para centrar el contenido principal */
+  margin: 2rem auto; /* Centra el contenido principal */
+}
+
+/* Sección de filtros */
+.filters-section {
+  width: 250px;
+  flex-shrink: 0; /* Asegura que no se encoja */
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  position: sticky; /* Sticky para que siga el scroll */
+  top: 20px; /* Distancia desde arriba al hacer scroll */
+  height: fit-content; /* Se ajusta al contenido */
+}
+
+.filter-title {
+  margin-top: 0;
+  color: var(--dark-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.filter-subtitle {
+  font-size: 1.1rem;
+  color: #636e72;
+  margin-bottom: 0.5rem;
+}
+
+.price-range {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.price-slider {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #636e72;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #555;
+  cursor: pointer;
+}
+
+.category-item input {
+  margin-right: 0.3rem;
+}
+
+/* Grid de productos */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  flex-grow: 1;
+}
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Para que el contenido se apile verticalmente */
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.product-image-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.add-to-cart-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%; /* Cambiado a redondo */
+  width: 45px; /* Tamaño fijo para redondo */
+  height: 45px; /* Tamaño fijo para redondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.product-card:hover .add-to-cart-btn {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.product-info {
+  padding: 1rem;
+  flex-grow: 1; /* Permite que ocupe el espacio */
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.15rem;
+  color: var(--dark-color);
+}
+
+.product-description {
+  margin: 0 0 1rem 0;
+  color: #636e72;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  display: box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  flex-grow: 1; /* Permite que ocupe el espacio para alinear el footer */
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  margin-top: auto; /* Empuja el footer hacia abajo */
+}
+
+.product-price {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 1.25rem;
+}
+
+.product-rating {
+  color: var(--warning-color); /* Usando la variable warning-color */
+}
+.product-rating i {
+  font-size: 1rem;
+}
+
+/* Footer */
+.main-footer {
+  background: var(--dark-color);
+  color: white;
+  padding: 2rem;
+  margin-top: 40px; /* Margen superior para separarlo del contenido */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.footer-section h4 {
+  margin-top: 0;
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+}
+
+.footer-section p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+.footer-section p i {
+  margin-right: 8px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.social-icons i {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: white; /* Asegura el color blanco para los íconos sociales */
+}
+
+.social-icons i:hover {
+  color: var(--secondary-color);
+}
+
+/* Estilos para el overlay del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login-modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  animation: fadeIn 0.3s ease-out; /* Animación de entrada */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--dark-color);
+}
+.close-modal:hover {
+  color: #555;
+}
+
+.login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.login-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+.login-header h2 {
+  margin: 0;
+  color: var(--dark-color);
+  font-size: 1.8rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.3rem;
+  color: var(--dark-color);
+  font-weight: bold;
+}
+.form-group label i {
+  margin-right: 0.5rem;
+  color: #777;
+}
+
+.form-group input {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1rem;
+}
+.form-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+}
+
+.login-submit-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.login-submit-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.login-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #636e72;
+}
+
+.login-footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos responsivos mejorados */
+@media (max-width: 992px) { /* Tabletas */
+    .navbar {
+        padding: 1rem 1.5rem;
+    }
+    .search-container {
+        margin: 0 1rem;
+        flex-grow: 1; /* Permite que ocupe más espacio */
+        max-width: none; /* Elimina la restricción de ancho */
+    }
+    .nav-actions {
+        gap: 0.8rem;
+    }
+    .auth-btn, .cart-btn {
+        min-width: unset; /* Quita el min-width fijo */
+        padding: 0.5rem 0.8rem;
+    }
+    .main-container {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.5rem;
+        margin: 1.5rem auto;
+    }
+    .filters-section {
+        width: 100%; /* Ocupa todo el ancho */
+        position: static; /* Quita sticky en pantallas más pequeñas */
+        margin-bottom: 0;
+    }
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    .add-to-cart-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        bottom: 0.8rem;
+        right: 0.8rem;
+    }
+    .product-image-container {
+        height: 180px;
+    }
+    .main-footer {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) { /* Móviles */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start; /* Alinea los elementos a la izquierda */
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .navbar-brand {
+        margin-bottom: 0.5rem;
+        width: 100%;
+        justify-content: center;
+    }
+    .search-container {
+        width: 100%;
+        margin: 0;
+    }
+    .search-input {
+        border-radius: 25px; /* Redondea completamente en móviles */
+    }
+    .search-btn {
+        display: none; /* Oculta el botón de búsqueda para simplificar */
+    }
+    .nav-actions {
+        flex-direction: row; /* Vuelve a fila para los botones de acción */
+        width: 100%;
+        justify-content: space-around; /* Distribuye los botones */
+        gap: 0.5rem;
+    }
+    .auth-btn, .cart-btn {
+        flex-grow: 1; /* Permite que los botones crezcan para llenar el espacio */
+        text-align: center;
+        justify-content: center;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    .auth-btn i, .cart-btn i {
+      margin-right: 0.2rem; /* Reduce el margen para íconos */
+    }
+    .cart-badge {
+        font-size: 0.6rem;
+        width: 18px;
+        height: 18px;
+        top: -5px;
+        right: -5px;
+    }
+    .main-container {
+        padding: 1rem;
+    }
+    .products-grid {
+        grid-template-columns: 1fr; /* Una columna para móviles */
+    }
+    .product-image-container {
+        height: 250px; /* Imágenes más grandes en móvil */
+    }
+    .login-modal {
+        padding: 1.5rem;
+    }
+    .login-submit-btn {
+        font-size: 0.95rem;
+        padding: 0.7rem 1rem;
+    }
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: var(--dark-color);
+  font-size: 1.8rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--dark-color);
+}
+
+.close-btn:hover {
+  color: #555;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+
+.register-link {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #636e72;
+  margin-top: 0.5rem;
+}
+
+.register-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+}
+
+      /* Estilos para el modal de login */
+      .modal-container {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 400px;
+        position: relative;
+        animation: fadeIn 0.3s ease-out;
+      }

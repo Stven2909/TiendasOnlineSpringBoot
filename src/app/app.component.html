@@ -1,0 +1,128 @@
+<nav class="navbar">
+  <a routerLink="/" class="navbar-brand-link"> <div class="navbar-brand">
+      <i class="fas fa-moon logo-icon"></i>
+      <span class="brand-name">LunaStore</span>
+    </div>
+  </a>
+
+  <div class="search-container">
+    <input type="text" placeholder="Buscar productos..." class="search-input">
+    <button class="search-btn">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+
+  <div class="nav-actions">
+    <button routerLink="/carrito" class="cart-btn">
+      <i class="fas fa-shopping-cart"></i>
+      <span *ngIf="carritoItems.length > 0" class="cart-badge">{{carritoItems.length}}</span>
+    </button>
+
+    <button *ngIf="!authService.isLoggedIn()" (click)="openLogin()" class="auth-btn login-btn">
+      <i class="fas fa-sign-in-alt"></i> Ingresar
+    </button>
+
+    <button *ngIf="!authService.isLoggedIn()" routerLink="/register" class="auth-btn register-btn">
+      <i class="fas fa-user-plus"></i> Registrarse
+    </button>
+
+    <button *ngIf="authService.isLoggedIn()" routerLink="/productos" class="auth-btn manage-btn">
+      <i class="fas fa-boxes"></i> Gestionar
+    </button>
+
+    <button *ngIf="authService.isLoggedIn()" routerLink="/" (click)="authService.logout()" class="auth-btn logout-btn">
+      <i class="fas fa-sign-out-alt"></i> Salir
+    </button>
+  </div>
+</nav>
+<div class="main-container">
+  <aside class="filters-section" *ngIf="!isSpecialRoute()">
+    <div class="filter-card">
+      <h3 class="filter-title"><i class="fas fa-filter"></i> Filtros</h3>
+
+      <div class="filter-group">
+        <h4 class="filter-subtitle">Precio</h4>
+        <div class="price-range">
+          <input type="range" min="0" max="1000" value="500" class="price-slider">
+          <div class="price-values">
+            <span>$0</span>
+            <span>$1000</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <h4 class="filter-subtitle">Categorías</h4>
+        <div class="category-list">
+          <label *ngFor="let category of categories" class="category-item">
+            <input type="checkbox"> {{category}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="products-grid" *ngIf="!isSpecialRoute()">
+    <div *ngFor="let producto of productos" class="product-card">
+      <div class="product-image-container">
+        <img [src]="getImageUrl(producto.image)" [alt]="producto.nombre" class="product-image">
+        <button (click)="agregarAlCarrito(producto)" class="add-to-cart-btn">
+          <i class="fas fa-cart-plus"></i> Añadir
+        </button>
+      </div>
+
+      <div class="product-info">
+        <h3 class="product-title">{{producto.nombre}}</h3>
+        <p class="product-description">{{producto.descripcion}}</p>
+        <div class="product-footer">
+          <span class="product-price">{{producto.precio | currency}}</span>
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <router-outlet *ngIf="isSpecialRoute()"></router-outlet>
+</div>
+
+  <!-- Modal de Login -->
+<div class="modal-overlay" *ngIf="showLoginModal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h2>Iniciar Sesión</h2>
+      <button class="close-btn" (click)="closeLogin()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="onLoginSubmit()">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" [(ngModel)]="loginData.email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" [(ngModel)]="loginData.password" name="password" required>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Ingresar</button>
+          <p class="register-link">¿No tienes cuenta? <a href="#" (click)="openRegister($event)">Regístrate aquí</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="footer-section">
+    <h4>Acerca de LunaStore</h4>
+    <p>Tu tienda en línea confiable para los mejores productos.</p>
+  </div>
+</footer>
+    

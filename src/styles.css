@@ -1,0 +1,125 @@
+@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+
+/* Estilo general para la tienda */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Estilo para cada producto */
+.shop__thumb {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shop__thumb:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.shop-thumb__img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    width: 100%; /* Optional: explícitamente define el ancho según el diseño */
+}
+
+.shop-thumb__title {
+    font-size: 1.2rem; /* Usando unidades relativas */
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.shop-thumb__price {
+    font-size: 1rem; /* Usando unidades relativas */
+    color: #333;
+    margin-top: 5px;
+}
+
+.shop-thumb-price_old {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.shop-thumb-price_new {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+/* Filtro de productos */
+.shop__filter {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.shop__filter h3.headline {
+    font-size: 1.1rem; /* Usando unidades relativas */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.shop__filter .checkbox,
+.shop__filter .radio {
+    margin-bottom: 10px;
+}
+
+.shop__filter input[type="radio"],
+.shop__filter input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Paginación */
+.pagination {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.pagination li {
+    display: inline;
+}
+
+.pagination li a {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination li a:hover {
+    background-color: #f1f1f1;
+}
+
+.pagination .active a {
+    background-color: #d9534f;
+    color: white;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .shop__filter {
+        margin-bottom: 20px; /* Añadir espacio entre el filtro y los productos */
+    }
+
+    .shop__thumb {
+        flex: 0 0 100%; /* Establece los productos en una columna en pantallas pequeñas */
+    }
+}

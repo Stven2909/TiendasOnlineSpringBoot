@@ -1,0 +1,254 @@
+/* src/app/carrito/carrito.component.css */
+/* Contenedor principal del carrito */
+.carrito-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Estilos para el mensaje de carga o error */
+.loading-spinner,
+.error-message,
+.empty-cart {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.1em;
+  color: #666;
+}
+
+.error-message {
+  color: #d9534f;
+}
+
+.empty-cart .btn {
+  margin-top: 15px;
+}
+
+/* Lista de ítems del carrito */
+.carrito-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Cada ítem individual en el carrito */
+.carrito-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Contenedor de la imagen del ítem */
+.item-image-container {
+  width: 90px;
+  height: 90px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+/* La imagen del producto dentro del carrito */
+.product-image {
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  height: 100%; /* Ocupa todo el alto del contenedor */
+  object-fit: cover; /* Escala la imagen para cubrir el área, recortando si es necesario */
+  display: block; /* Elimina espacio extra debajo de la imagen */
+}
+
+/* Detalles del producto (nombre, descripción, precio) */
+.item-details {
+  flex-grow: 1;
+}
+
+.item-details h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.item-details p {
+  margin: 0 0 3px 0;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Botones de acción */
+.btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  margin-left: 10px;
+}
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: #333;
+}
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Sección del total del carrito y botones inferiores */
+.carrito-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.carrito-total strong {
+  margin-right: auto;
+  font-size: 1.3em;
+  color: #333;
+}
+
+/* Estilos para el modal de factura */
+.factura-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.factura-contenido {
+  background-color: white;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.factura-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.btn-cerrar {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+.factura-body {
+  padding: 20px;
+}
+
+.factura-info {
+  margin-bottom: 20px;
+}
+
+.factura-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.factura-tabla th, .factura-tabla td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.factura-tabla th {
+  background-color: #f2f2f2;
+}
+
+.total-label {
+  text-align: right;
+  font-weight: bold;
+}
+
+.total-valor {
+  font-weight: bold;
+}
+
+.factura-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Estilos para impresión */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .factura-contenido, .factura-contenido * {
+    visibility: visible;
+  }
+  .factura-contenido {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+  .btn-cerrar, .factura-footer button {
+    display: none;
+  }
+}

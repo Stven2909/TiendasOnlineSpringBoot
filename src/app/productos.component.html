@@ -1,0 +1,162 @@
+<!-- src/app/productos/productos.component.html -->
+<div class="productos-container">
+  <h2>Gestión de Productos</h2>
+
+  <div *ngIf="loading" class="loading-spinner">
+    Cargando productos...
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <button *ngIf="!errorMessage" (click)="mostrarFormularioCrear()" class="btn btn-primary mb-3">Crear Nuevo Producto</button>
+
+  <table *ngIf="productos.length > 0 && !loading && !errorMessage" class="productos-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.categoria }}</td>
+        <td>{{ producto.precio | currency }}</td>
+        <td>{{ producto.stock }}</td>
+        <td><img [src]="getImageUrl(producto.image)" [alt]="producto.nombre" width="50"></td>
+        <td>
+          <button (click)="seleccionarProducto(producto)" class="btn btn-warning btn-sm">Editar</button>
+          <button (click)="eliminarProducto(producto.id)" class="btn btn-danger btn-sm">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="productos.length === 0 && !loading && !errorMessage" class="empty-message">
+    <p>No hay productos registrados.</p>
+  </div>
+
+  <!-- Formulario para crear/editar producto -->
+  <div *ngIf="showForm" class="form-container">
+    <h3>{{ selectedProducto ? 'Editar Producto' : 'Crear Producto' }}</h3>
+    <form>
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input
+          id="nombre"
+          [ngModel]="selectedProducto ? selectedProducto.nombre : newProducto.nombre"
+          (ngModelChange)="selectedProducto ? selectedProducto.nombre = $event : newProducto.nombre = $event"
+          name="nombre"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea
+          id="descripcion"
+          [ngModel]="selectedProducto ? selectedProducto.descripcion : newProducto.descripcion"
+          (ngModelChange)="selectedProducto ? selectedProducto.descripcion = $event : newProducto.descripcion = $event"
+          name="descripcion"
+          class="form-control"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="categoria">Categoría:</label>
+        <select
+          id="categoria"
+          [ngModel]="selectedProducto ? selectedProducto.categoria : newProducto.categoria"
+          (ngModelChange)="selectedProducto ? selectedProducto.categoria = $event : newProducto.categoria = $event"
+          name="categoria"
+          class="form-control"
+          required
+        >
+          <option value="" disabled>Selecciona una categoría</option>
+          <option value="Pantalon">Pantalon</option>
+          <option value="Camisa">Camisa</option>
+          <option value="Camison">Camison</option>
+          <option value="Pantuflas">Pantuflas</option>
+          <option value="Regalos">Regalos</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio:</label>
+        <input
+          id="precio"
+          [ngModel]="selectedProducto ? selectedProducto.precio : newProducto.precio"
+          (ngModelChange)="selectedProducto ? selectedProducto.precio = $event : newProducto.precio = $event"
+          name="precio"
+          type="number"
+          class="form-control"
+          min="0"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="stock">Stock:</label>
+        <input
+          id="stock"
+          [ngModel]="selectedProducto ? selectedProducto.stock : newProducto.stock"
+          (ngModelChange)="selectedProducto ? selectedProducto.stock = $event : newProducto.stock = $event"
+          name="stock"
+          type="number"
+          class="form-control"
+          min="0"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="image">Imagen (nombre del archivo):</label>
+        <input
+          id="image"
+          [ngModel]="selectedProducto ? selectedProducto.image : newProducto.image"
+          (ngModelChange)="selectedProducto ? selectedProducto.image = $event : newProducto.image = $event"
+          name="image"
+          type="text"
+          class="form-control"
+          placeholder="ej: producto1.jpg"
+          required
+        />
+      </div>
+      <div class="form-preview" *ngIf="(selectedProducto && selectedProducto.image) || (!selectedProducto && newProducto.image)">
+        <label>Vista previa:</label>
+        <img 
+          [src]="getImageUrl(selectedProducto ? selectedProducto.image : newProducto.image)" 
+          alt="Vista previa" 
+          class="img-preview"
+        >
+      </div>
+      <div class="form-buttons">
+        <button
+          *ngIf="!selectedProducto"
+          (click)="crearProducto()"
+          class="btn btn-success"
+          [disabled]="!validarProducto(newProducto)"
+        >
+          Crear
+        </button>
+        <button
+          *ngIf="selectedProducto"
+          (click)="actualizarProducto()"
+          class="btn btn-success"
+          [disabled]="!validarProducto(selectedProducto)"
+        >
+          Actualizar
+        </button>
+        <button (click)="cancelarFormulario()" class="btn btn-secondary">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
