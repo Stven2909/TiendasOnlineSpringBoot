@@ -1,10 +1,8 @@
-# LunaStore
+# 🌙 Luna Store SV - Frontend
 
-```bash# 🛍️ Luna Store SV - Frontend
-
-[![Angular](https://img.shields.io/badge/Angular-17-red.svg)](https://angular.io/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-5-purple.svg)](https://getbootstrap.com/)
+[![Angular](https://img.shields.io/badge/Angular-17-red.svg?logo=angular)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5-purple.svg?logo=bootstrap)](https://getbootstrap.com/)
 [![License](https://img.shields.io/badge/License-Academic-red.svg)](#)
 
 **Luna Store SV Frontend** es una aplicación web desarrollada con **Angular** que proporciona una interfaz moderna e intuitiva para un sistema de comercio electrónico. Ofrece una experiencia de usuario completa para la navegación de productos, gestión de carritos y procesamiento de órdenes.
@@ -42,14 +40,14 @@
 
 ## ✨ Características
 
-### 🛒 Funcionalidades de E-commerce
+### 🛒 **Funcionalidades de E-commerce**
 - **Catálogo de Productos**: Navegación intuitiva con filtros y búsqueda
 - **Carrito de Compras**: Gestión completa con actualización en tiempo real
 - **Gestión de Usuarios**: Registro, login y perfiles de cliente
 - **Sistema de Facturación**: Proceso de checkout y generación de facturas
 - **Historial de Compras**: Seguimiento de pedidos anteriores
 
-### 💻 Características Técnicas
+### 💻 **Características Técnicas**
 - **SPA (Single Page Application)**: Navegación fluida sin recargas
 - **Responsive Design**: Adaptado para móviles, tablets y desktop
 - **Comunicación API REST**: Integración completa con el backend
@@ -62,13 +60,13 @@
 
 ```
 src/app/
-├── 📁 components/          # Componentes reutilizables
+├── 📁 components/              # Componentes reutilizables
 │   ├── header/
 │   ├── footer/
 │   ├── product-card/
 │   ├── shopping-cart/
 │   └── loading-spinner/
-├── 📁 pages/               # Páginas principales
+├── 📁 pages/                   # Páginas principales
 │   ├── home/
 │   ├── products/
 │   ├── product-detail/
@@ -77,28 +75,28 @@ src/app/
 │   ├── login/
 │   ├── register/
 │   └── profile/
-├── 📁 services/            # Servicios para API REST
+├── 📁 services/                # Servicios para API REST
 │   ├── product.service.ts
 │   ├── customer.service.ts
 │   ├── cart.service.ts
 │   ├── order.service.ts
 │   └── auth.service.ts
-├── 📁 models/              # Interfaces y DTOs
+├── 📁 models/                  # Interfaces y DTOs
 │   ├── product.model.ts
 │   ├── customer.model.ts
 │   ├── cart.model.ts
 │   └── order.model.ts
-├── 📁 guards/              # Guardias de rutas
+├── 📁 guards/                  # Guardias de rutas
 │   ├── auth.guard.ts
 │   └── admin.guard.ts
-├── 📁 interceptors/        # Interceptores HTTP
+├── 📁 interceptors/            # Interceptores HTTP
 │   ├── auth.interceptor.ts
 │   └── error.interceptor.ts
-├── 📁 shared/              # Módulos y utilidades compartidas
+├── 📁 shared/                  # Módulos y utilidades compartidas
 │   ├── pipes/
 │   ├── directives/
 │   └── validators/
-└── 📁 assets/              # Recursos estáticos
+└── 📁 assets/                  # Recursos estáticos
     ├── images/
     ├── icons/
     └── styles/
@@ -108,10 +106,9 @@ src/app/
 
 ## ⚙️ Configuración
 
-### 🔧 Variables de Entorno
+### 🔧 **Variables de Entorno**
 
-Crear archivo `src/environments/environment.ts`:
-
+**Desarrollo** (`src/environments/environment.ts`):
 ```typescript
 export const environment = {
   production: false,
@@ -121,8 +118,7 @@ export const environment = {
 };
 ```
 
-### 🚀 Producción (`environment.prod.ts`):
-
+**Producción** (`environment.prod.ts`):
 ```typescript
 export const environment = {
   production: true,
@@ -136,37 +132,33 @@ export const environment = {
 
 ## 🚀 Instalación y Ejecución
 
-### 📋 Prerrequisitos
+### 📋 **Prerrequisitos**
+- 📦 Node.js 18+ y npm
+- 🅰️ Angular CLI 17+
+- 🔧 Git
 
-- 📦 **Node.js** 18+ y **npm**
-- 🅰️ **Angular CLI** 17+
-- 🔧 **Git**
+### **Pasos de instalación**
 
-### 1️⃣ Clonar el repositorio
-
+1. **Clonar el repositorio**
 ```bash
 git clone https://github.com/usuario/lunastore-frontend.git
 cd lunastore-frontend
 ```
 
-### 2️⃣ Instalar dependencias
-
+2. **Instalar dependencias**
 ```bash
 npm install
 ```
 
-### 3️⃣ Instalar Angular CLI (si no está instalado)
-
+3. **Instalar Angular CLI** (si no está instalado)
 ```bash
 npm install -g @angular/cli
 ```
 
-### 4️⃣ Configurar entorno
-
+4. **Configurar entorno**
 Verificar que `src/environments/environment.ts` tenga la URL correcta del backend.
 
-### 5️⃣ Ejecutar la aplicación
-
+5. **Ejecutar la aplicación**
 ```bash
 # Desarrollo con recarga automática
 ng serve -o
@@ -175,18 +167,14 @@ ng serve -o
 ng serve --port 4200 --open
 ```
 
-### 6️⃣ Verificar instalación
-
-La aplicación estará disponible en:
-```
-🌐 http://localhost:4200/
-```
+6. **Verificar instalación**
+La aplicación estará disponible en: **🌐 http://localhost:4200/**
 
 ---
 
 ## 🔗 Integración con Backend
 
-### 📡 Configuración de API
+### 📡 **Configuración de API**
 
 Los servicios están configurados para comunicarse con el backend de Luna Store:
 
@@ -206,27 +194,25 @@ export class ProductService {
 }
 ```
 
-### 🔄 Endpoints Principales
+### 🔄 **Endpoints Principales**
 
 | Servicio | Endpoint Backend | Descripción |
 |----------|------------------|-------------|
-| **Products** | `/api/products` | Gestión de productos |
-| **Customers** | `/api/customers` | Gestión de clientes |
-| **Orders** | `/api/orders` | Gestión de pedidos |
-| **Auth** | `/api/auth` | Autenticación |
+| Products | `/api/products` | Gestión de productos |
+| Customers | `/api/customers` | Gestión de clientes |
+| Orders | `/api/orders` | Gestión de pedidos |
+| Auth | `/api/auth` | Autenticación |
 
 ---
 
 ## 📱 Características Responsive
 
-### 📐 Breakpoints de Bootstrap
-
+### 📐 **Breakpoints de Bootstrap**
 - **Mobile**: < 576px
-- **Tablet**: 576px - 992px  
+- **Tablet**: 576px - 992px
 - **Desktop**: > 992px
 
-### 🎨 Componentes Adaptativos
-
+### 🎨 **Componentes Adaptativos**
 - Header con menú hamburguesa en móviles
 - Grid de productos responsive
 - Carrito lateral/modal según dispositivo
@@ -236,8 +222,7 @@ export class ProductService {
 
 ## 🚀 Despliegue
 
-### 🏗️ Build de Producción
-
+### 🏗️ **Build de Producción**
 ```bash
 # Build optimizado para producción
 ng build --configuration production
@@ -245,9 +230,9 @@ ng build --configuration production
 # Los archivos se generan en dist/lunastore-frontend/
 ```
 
-### 🌐 Opciones de Despliegue
+### 🌐 **Opciones de Despliegue**
 
-#### Netlify
+**Netlify**
 ```bash
 # Instalar Netlify CLI
 npm install -g netlify-cli
@@ -256,7 +241,7 @@ npm install -g netlify-cli
 netlify deploy --prod --dir=dist/lunastore-frontend
 ```
 
-#### Vercel
+**Vercel**
 ```bash
 # Instalar Vercel CLI
 npm install -g vercel
@@ -265,7 +250,7 @@ npm install -g vercel
 vercel --prod
 ```
 
-#### Firebase Hosting
+**Firebase Hosting**
 ```bash
 # Instalar Firebase CLI
 npm install -g firebase-tools
@@ -286,14 +271,13 @@ firebase deploy
 | `ng test` | Ejecutar pruebas unitarias |
 | `ng e2e` | Pruebas end-to-end |
 | `ng lint` | Análisis de código |
-| `npm start` | Alias para `ng serve` |
+| `npm start` | Alias para ng serve |
 
 ---
 
 ## 🔧 Configuración Adicional
 
-### 📦 Dependencias Principales
-
+### 📦 **Dependencias Principales**
 ```json
 {
   "dependencies": {
@@ -307,8 +291,7 @@ firebase deploy
 }
 ```
 
-### 🎨 Personalización de Estilos
-
+### 🎨 **Personalización de Estilos**
 ```scss
 // src/styles.scss
 @import 'bootstrap/scss/bootstrap';
@@ -331,29 +314,25 @@ firebase deploy
 4. 📤 Push a la rama (`git push origin feature/AmazingFeature`)
 5. 🔄 Abre un Pull Request
 
-### 📋 Estándares de Desarrollo
-
-- Seguir **Angular Style Guide**
-- Usar **TypeScript strict mode**
-- Implementar **pruebas unitarias**
+### 📋 **Estándares de Desarrollo**
+- Seguir Angular Style Guide
+- Usar TypeScript strict mode
+- Implementar pruebas unitarias
 - Documentar componentes complejos
-- Mantener **código limpio** y comentado
+- Mantener código limpio y comentado
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto es de carácter **académico** desarrollado como parte de un proyecto educativo.
+Este proyecto es de carácter académico desarrollado como parte de un proyecto educativo.
+
+---
 
 **Desarrollado con ❤️ por Steven Rivera**
 
----
-
-## 📞 Soporte
+### 📞 Soporte
 
 ¿Tienes alguna pregunta o sugerencia?
 
-- 📧 **Email**: steven.melendez001@gmail.com
-
----
-
+📧 **Email**: steven.melendez001@gmail.com
